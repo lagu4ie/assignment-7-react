@@ -1,52 +1,55 @@
+/* Mobile-first base styles */
+
 .events-page {
-  padding: 2rem;
-  max-width: 87.5rem;
   width: 100%;
+  max-width: 87.5rem;
   margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .loading {
   text-align: center;
-  padding: 6rem 0;
-  font-size: 1.5rem;
+  padding: 4rem 1rem;
+  font-size: 1.25rem;
   color: #666;
 }
 
 .page-header {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .page-header h1 {
-  font-size: clamp(1.75rem, 4vw, 2.625rem);
+  font-size: 1.75rem;
   color: #2c3e50;
   margin-bottom: 0.625rem;
 }
 
 .page-header p {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: #666;
 }
 
 .events-container {
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .sidebar {
-  width: 17.5rem;
-  flex-shrink: 0;
+  width: 100%;
 }
 
 .filter-section {
   background-color: white;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 .filter-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.9375rem;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
   color: #2c3e50;
 }
 
@@ -55,58 +58,72 @@
   color: #999;
 }
 
+/* Mobile: one card per row */
+
 .events-grid {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   min-width: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
 }
 
-/* Tablet screens */
-@media (max-width: 64rem) {
+.events-grid > * {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Tablet: 768px and larger */
+
+@media (min-width: 48rem) {
   .events-page {
     padding: 1.5rem;
   }
 
-  .events-container {
-    gap: 1.5rem;
-  }
-
-  .sidebar {
-    width: 13rem;
+  .page-header h1 {
+    font-size: 2.25rem;
   }
 
   .events-grid {
-    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .events-grid > * {
+    flex: 0 0 calc(50% - 0.75rem);
+    width: auto;
   }
 }
 
-/* Mobile screens */
-@media (max-width: 48rem) {
+/* Desktop: 1024px and larger */
+
+@media (min-width: 64rem) {
   .events-page {
-    padding: 1rem;
+    padding: 2rem;
   }
 
   .page-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.625rem;
   }
 
   .events-container {
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
   }
 
   .sidebar {
-    width: 100%;
+    flex: 0 0 17.5rem;
+    width: 17.5rem;
   }
 
   .events-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .filter-section {
-    padding: 1rem;
+    flex: 1;
+    min-width: 0;
   }
 }
